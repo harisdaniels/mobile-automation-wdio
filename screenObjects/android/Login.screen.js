@@ -11,6 +11,8 @@ class LoginScreen {
 
   async clearPasswordField() { await this.inputPassword.clearValue(); }
   async clearUsernameField() { await this.inputUsername.clearValue(); }
+  async enterUsername(username) { await this.inputUsername.setValue(username); }
+  async enterPassword(password) { await this.inputPassword.setValue(password); }
 
   async login(username, password) {
     await this.inputUsername.setValue(username);

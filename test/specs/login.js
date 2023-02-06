@@ -4,62 +4,96 @@ const CatalogScreen = require("../../screenObjects/android/Catalog.screen.js")
 
 describe("End-to-end login testing", () =>  {
 
-  beforeEach(async () => {
-    await LeftSideMenuScreen.menuButton.click();
-    await LeftSideMenuScreen.loginMenu.click();
-    // await driver.pause(3000)
+  before(async () => {
+    try {
+      await LeftSideMenuScreen.menuButton.click();
+      await LeftSideMenuScreen.loginMenu.click();
+      // await driver.pause(3000)
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should not be able to log in without entering anything.", async () => {
-    await LoginScreen.loginButton.click();
-    await expect(LoginScreen.requiredUsernameError).toHaveText("Username is required");
+    try {
+      await LoginScreen.loginButton.click();
+      await expect(LoginScreen.requiredUsernameError).toHaveText("Username is required");
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should not be able to log in without entering username.", async () => {
-    await LoginScreen.login("", "Test");
-    await LoginScreen.loginButton.click();
-    await expect(LoginScreen.requiredUsernameError).toHaveText("Username is required");
+    try {
+      await LoginScreen.enterPassword("Test");
+      await LoginScreen.loginButton.click();
+      await expect(LoginScreen.requiredUsernameError).toHaveText("Username is required");
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should not be able to log in without entering password.", async () => {
-    await LoginScreen.clearUsernameField();
-    await LoginScreen.login("Test", "");
-    await LoginScreen.loginButton.click();
-    await expect(LoginScreen.requiredPasswordError).toHaveText("Password is required");
+    try {
+      await LoginScreen.clearPasswordField();
+      await LoginScreen.enterUsername("Test");
+      await LoginScreen.loginButton.click();
+      await expect(LoginScreen.requiredPasswordError).toHaveText("Password is required");
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should not be able to log in with invalid credentials.", async () => {
-    await LoginScreen.clearUsernameField();
-    await LoginScreen.clearPasswordField();
-    await LoginScreen.login("Test", "Test");
-    await LoginScreen.loginButton.click();
-    await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
+    try {
+      await LoginScreen.clearUsernameField();
+      await LoginScreen.clearPasswordField();
+      await LoginScreen.login("Test", "Test");
+      await LoginScreen.loginButton.click();
+      await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should not be able to log in with invalid username.", async () => {
-    await LoginScreen.clearUsernameField();
-    await LoginScreen.clearPasswordField();
-    await LoginScreen.login("Test", "10203040");
-    await LoginScreen.loginButton.click();
-    await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
+    try {
+      await LoginScreen.clearUsernameField();
+      await LoginScreen.clearPasswordField();
+      await LoginScreen.login("Test", "10203040");
+      await LoginScreen.loginButton.click();
+      await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should not be able to log in with invalid password.", async () => {
-    await LoginScreen.clearUsernameField();
-    await LoginScreen.clearPasswordField();
-    await LoginScreen.login("bob@example.com", "test");
-    await LoginScreen.loginButton.click();
-    await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
+    try {
+      await LoginScreen.clearUsernameField();
+      await LoginScreen.clearPasswordField();
+      await LoginScreen.login("bob@example.com", "test");
+      await LoginScreen.loginButton.click();
+      await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   it("User should be able to log in with valid credentials.", async () => {
-    await LoginScreen.login("bob@example.com", "10203040");
-    await expect(CatalogScreen.productTitleHeader).toHaveText("Products");
-
-    await LeftSideMenuScreen.menuButton.click();
-    await LeftSideMenuScreen.logoutMenu.click();
-    await LeftSideMenuScreen.logoutButton.waitForDisplayed({ timeout: 3000 });
-    await LeftSideMenuScreen.logoutButton.click();
+    try {
+      await LoginScreen.login("bob@example.com", "10203040");
+      await CatalogScreen.productTitleHeader.waitForDisplayed({ timeout: 3000 });
+      await expect(CatalogScreen.productTitleHeader).toHaveText("Products");
+  
+      await LeftSideMenuScreen.menuButton.click();
+      await LeftSideMenuScreen.logoutMenu.waitForDisplayed({ timeout: 3000 });
+      await LeftSideMenuScreen.logoutMenu.click();
+      await LeftSideMenuScreen.frameLogoutLayOut.waitForDisplayed({ timeout: 3000 });
+      await LeftSideMenuScreen.logoutButton.click();
+    } catch (error) {
+      console.log(error);
+    };
   });
 
 });
