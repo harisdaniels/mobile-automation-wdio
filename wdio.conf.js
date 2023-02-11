@@ -71,7 +71,6 @@ exports.config = {
         // excludeDriverLogs: ['bugreport', 'server'],
 
         platformName: "Android",
-        "appium:platformVersion": "12",
         "appium:deviceName": "Pixel 2 API 31(S)",
         "appium:app": androidAppPath,
         "appium:automationName": "UIAutomator2",
