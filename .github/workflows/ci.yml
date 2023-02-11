@@ -39,7 +39,7 @@ jobs:
           uses: reactivecircus/android-emulator-runner@v2
           with:
             api-level: 27
-            script: emulator -avd avd28 -no-audio -no-window -no-accel &
+            script: emulator -avd test -no-audio -no-window -no-accel &
         - name: Install Dependencies
           run: npm install
         - name: Run Automation
