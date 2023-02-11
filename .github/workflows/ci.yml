@@ -55,6 +55,6 @@ jobs:
             target: ${{ matrix.target }}
             arch: x86_64
             profile: Nexus 6
-            script: /gradlew connectedCheck
+            script: ./gradlew connectedCheck
         - name: Run Automation
           run: npm run test
