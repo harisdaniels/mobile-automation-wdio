@@ -40,7 +40,7 @@ jobs:
         - name: Install and Setup emulator
           uses: reactivecircus/android-emulator-runner@v1
           with:
-            api-level: 30
+            api-level: 29
             script: ./gradlew connectedCheck
         - name: Run Automation
           run: npm run test
