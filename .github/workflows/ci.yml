@@ -1,0 +1,36 @@
+name: Run Automation
+#on: [push, pull_request]
+on:
+   workflow_dispatch:
+    inputs:
+      platform:
+        description: 'select where to run'
+        required: true
+        default: 'github'
+        type: choice
+        options:
+        - github
+      artifacts:
+        description: 'Artifact reporting'
+        required: false
+        type: boolean
+    push:
+      branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 18
+        - name: Install Dependencies and Appium Server
+          run: |
+            npm install
+            chmod +x ./scripts/RunAppiumServer.sh
+        - name: Run Automation
+          run: npx wdio
+          continue-on-error: false
