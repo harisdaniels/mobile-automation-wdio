@@ -37,6 +37,10 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18
+        - uses: actions/setup-java@v3
+          with:
+            distribution: 'temurin'
+            java-version: '11'
         - name: Setup Appium Server
           run: chmod +x ./RunAppiumServer.sh
         - name: Install Dependencies
@@ -51,4 +55,4 @@ jobs:
             profile: Nexus 6
             script: emulator -avd Nexus 6
         - name: Run Automation
-          run: npx wdio
+          run: npm run test
