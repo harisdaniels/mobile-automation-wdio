@@ -30,7 +30,7 @@ jobs:
         - name: Install Dependencies and Appium Server
           run: |
             npm install
-            chmod +x ./scripts/RunAppiumServer.sh
+            chmod +x ./RunAppiumServer.sh
         - name: Run Automation
           run: npx wdio
           continue-on-error: false
