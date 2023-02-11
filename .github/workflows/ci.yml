@@ -46,8 +46,3 @@ jobs:
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: true
             script: npm run test
-        - name: Generate Report
-          uses: actions/upload-artifact@v3
-          with:
-            name: mochawesome-report
-            path: ./mochawesome-report
