@@ -41,11 +41,14 @@ jobs:
           run: chmod +x ./RunAppiumServer.sh
         - name: Install Dependencies
           run: npm install
-        - name: Install emulator and Run automation
+        - name: Install and Setup emulator
           uses: reactivecircus/android-emulator-runner@v1
           with:
+            avd-name: ${{ env.ANDROID_AVD }}
             api-level: ${{ matrix.api-level }}
             target: ${{ matrix.target }}
             arch: x86_64
             profile: Nexus 6
-            script: npx wdio
+            script: emulator -avd Nexus 6
+        - name: Run Automation
+          run: npx wdio
