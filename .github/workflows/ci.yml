@@ -32,7 +32,7 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: 18
-        - name: Setup Appium Server
+        - name: Install Appium and Setup Appium Server
           run: |
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
@@ -46,3 +46,8 @@ jobs:
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: true
             script: npm run test
+        - name: Generate Report
+          uses: actions/upload-artifact@v3
+          with:
+            name: mochawesome-report
+            path: ./mochawesome-report

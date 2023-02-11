@@ -1,8 +1,12 @@
 class LoginScreen {
 
-  get inputUsername() { return $('//*[@content-desc="Username input field"]'); }
-  get inputPassword() { return $('//*[@content-desc="Password input field"]'); }
-  get loginButton() { return $('//*[@content-desc="Login button"]'); }
+  get inputUsername() { return $('~Username input field'); }
+  get inputPassword() { return $('~Password input field'); }
+  get loginButton() { return $('~Login button'); }
+
+  // get inputUsername() { return $('//*[@content-desc="Username input field"]'); }
+  // get inputPassword() { return $('//*[@content-desc="Password input field"]'); }
+  // get loginButton() { return $('//*[@content-desc="Login button"]'); }
 
   // Error message element
   get requiredUsernameError() { return $('//android.view.ViewGroup[@content-desc="Username-error-message"]/android.widget.TextView'); }
