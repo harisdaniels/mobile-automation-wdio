@@ -44,9 +44,6 @@ jobs:
           run: |
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
-            nohup appium server \
-              --port=$APPIUM_TEST_SERVER_PORT \
-              --address=$APPIUM_TEST_SERVER_HOST \
         - name: Install and Setup Emulator
           uses: reactivecircus/android-emulator-runner@v2
           with:
@@ -64,4 +61,7 @@ jobs:
             disable-animations: true
             script: |
               npm install
+              nohup appium server \
+                --port=$APPIUM_TEST_SERVER_PORT \
+                --address=$APPIUM_TEST_SERVER_HOST \
               npm run test
