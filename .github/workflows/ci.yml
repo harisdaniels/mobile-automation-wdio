@@ -1,4 +1,4 @@
-name: Run Automation
+name: Run Mobile Automation
 #on: [push, pull_request]
 on:
    workflow_dispatch:
