@@ -58,7 +58,4 @@ jobs:
             disable-animations: true
             script: |
               npm install
-              nohup appium server \
-                --port=$APPIUM_TEST_SERVER_PORT \
-                --address=$APPIUM_TEST_SERVER_HOST \
               npm run test
