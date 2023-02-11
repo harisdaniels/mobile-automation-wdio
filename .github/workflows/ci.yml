@@ -27,6 +27,10 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [25] 
+        target: [default]
     steps:
         - name: Checkout
           uses: actions/checkout@v3
@@ -35,6 +39,11 @@ jobs:
             node-version: 18
         - name: Setup emulator
           uses: reactivecircus/android-emulator-runner@v1
+          with:
+            api-level: ${{ matrix.api-level }}
+            target: ${{ matrix.target }}
+            arch: x86_64
+            profile: Nexus 6
         - name: Install Dependencies and Appium Server
           run: |
             npm install
