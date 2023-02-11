@@ -47,7 +47,6 @@ jobs:
             nohup appium server \
               --port=$APPIUM_TEST_SERVER_PORT \
               --address=$APPIUM_TEST_SERVER_HOST \
-            popd
         - name: Install and Setup Emulator
           uses: reactivecircus/android-emulator-runner@v2
           with:
