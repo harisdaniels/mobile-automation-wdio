@@ -42,7 +42,9 @@ jobs:
             distribution: 'temurin'
             java-version: '11'
         - name: Setup Appium Server
-          run: chmod +x ./RunAppiumServer.sh
+          run: |
+            chmod +x ./RunAppiumServer.sh
+            ./RunAppiumServer.sh
         - name: Install Dependencies
           run: npm install
         - name: Install and Setup emulator
