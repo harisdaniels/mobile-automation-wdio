@@ -17,6 +17,12 @@ on:
     push:
       branches:
       - main
+    env:
+      CI: true
+      ANDROID_AVD: emulator
+      APPIUM_TEST_SERVER_PORT: 4723
+      APPIUM_TEST_SERVER_HOST: 0.0.0.0
+      _FORCE_LOGS: 1
 
 jobs:
   build:
@@ -27,6 +33,8 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18
+        - name: Setup emulator
+          uses: reactivecircus/android-emulator-runner@v1
         - name: Install Dependencies and Appium Server
           run: |
             npm install
