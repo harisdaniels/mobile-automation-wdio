@@ -20,12 +20,6 @@ on:
 
 jobs:
   setup-build-test:
-    strategy:
-        matrix:
-          api-level: [27]
-    env:
-      APPIUM_TEST_SERVER_PORT: 4723
-      APPIUM_TEST_SERVER_HOST: 0.0.0.0
     runs-on: macos-latest
     steps:
         - name: Checkout
@@ -41,13 +35,14 @@ jobs:
           run: |
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
-        - name: Install Dependencies and Run Automation Test
+        - name: Install Dependencies
           uses: reactivecircus/android-emulator-runner@v2
           with:
-            api-level: ${{ matrix.api-level }}
+            api-level: 31
             force-avd-creation: false
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: true
             script: |
               npm install
-              npm run test
+        - name: Run Automation Test
+          run:  npm run test
