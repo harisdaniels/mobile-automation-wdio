@@ -31,17 +31,17 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18
-        - name: Setup emulator
+        - name: Install emulator
           uses: reactivecircus/android-emulator-runner@v1
           with:
             api-level: ${{ matrix.api-level }}
             target: ${{ matrix.target }}
             arch: x86_64
             profile: Nexus 6
-        - name: Install Dependencies and Appium Server
-          run: |
-            npm install
-            chmod +x ./RunAppiumServer.sh
+        - name: Setup Appium Server
+          run: chmod +x ./RunAppiumServer.sh
+        - name: Install Dependencies
+          run: npm install
         - name: Run Automation
           run: npx wdio
           continue-on-error: false
