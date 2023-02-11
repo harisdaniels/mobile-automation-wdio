@@ -17,6 +17,7 @@ describe("End-to-end login testing", () =>  {
   it("User should not be able to log in without entering anything.", async () => {
     try {
       await LoginScreen.loginButton.click();
+      await LoginScreen.requiredUsernameError.waitForDisplayed({ timeout: 1000 });
       await expect(LoginScreen.requiredUsernameError).toHaveText("Username is required");
     } catch (error) {
       console.log(error);
@@ -27,6 +28,7 @@ describe("End-to-end login testing", () =>  {
     try {
       await LoginScreen.enterPassword("Test");
       await LoginScreen.loginButton.click();
+      await LoginScreen.requiredUsernameError.waitForDisplayed({ timeout: 1000 });
       await expect(LoginScreen.requiredUsernameError).toHaveText("Username is required");
     } catch (error) {
       console.log(error);
@@ -38,6 +40,7 @@ describe("End-to-end login testing", () =>  {
       await LoginScreen.clearPasswordField();
       await LoginScreen.enterUsername("Test");
       await LoginScreen.loginButton.click();
+      await LoginScreen.requiredPasswordError.waitForDisplayed({ timeout: 1000 });
       await expect(LoginScreen.requiredPasswordError).toHaveText("Password is required");
     } catch (error) {
       console.log(error);
@@ -50,6 +53,7 @@ describe("End-to-end login testing", () =>  {
       await LoginScreen.clearPasswordField();
       await LoginScreen.login("Test", "Test");
       await LoginScreen.loginButton.click();
+      await LoginScreen.errorMessageText.waitForDisplayed({ timeout: 1000 });
       await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
     } catch (error) {
       console.log(error);
@@ -62,6 +66,7 @@ describe("End-to-end login testing", () =>  {
       await LoginScreen.clearPasswordField();
       await LoginScreen.login("Test", "10203040");
       await LoginScreen.loginButton.click();
+      await LoginScreen.errorMessageText.waitForDisplayed({ timeout: 1000 });
       await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
     } catch (error) {
       console.log(error);
@@ -74,6 +79,7 @@ describe("End-to-end login testing", () =>  {
       await LoginScreen.clearPasswordField();
       await LoginScreen.login("bob@example.com", "test");
       await LoginScreen.loginButton.click();
+      await LoginScreen.errorMessageText.waitForDisplayed({ timeout: 1000 });
       await expect(LoginScreen.errorMessageText).toHaveText("Provided credentials do not match any user in this service.");
     } catch (error) {
       console.log(error);
@@ -87,9 +93,9 @@ describe("End-to-end login testing", () =>  {
       await expect(CatalogScreen.productTitleHeader).toHaveText("Products");
   
       await LeftSideMenuScreen.menuButton.click();
-      await LeftSideMenuScreen.logoutMenu.waitForDisplayed({ timeout: 3000 });
+      await driver.pause(1000);
       await LeftSideMenuScreen.logoutMenu.click();
-      await LeftSideMenuScreen.frameLogoutLayOut.waitForDisplayed({ timeout: 3000 });
+      await LeftSideMenuScreen.frameLogoutLayOut.waitForExist({ timeout: 5000 });
       await LeftSideMenuScreen.logoutButton.click();
     } catch (error) {
       console.log(error);
