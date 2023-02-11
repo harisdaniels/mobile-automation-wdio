@@ -19,7 +19,7 @@ on:
       - main
 
 jobs:
-  build-setup-test:
+  setup-build-test:
     runs-on: macos-latest
     steps:
         - name: Checkout
@@ -35,12 +35,12 @@ jobs:
           run: |
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
+        - name: Install and Setup emulator
+          uses: reactivecircus/android-emulator-runner@v2
+          with:
+            api-level: 27
+            script: ./gradlew connectedCheck
         - name: Install Dependencies
           run: npm install
-        - name: Install and Setup emulator
-          uses: reactivecircus/android-emulator-runner@v1
-          with:
-            api-level: 29
-            script: ./gradlew connectedCheck
         - name: Run Automation
           run: npm run test
