@@ -9,7 +9,8 @@
     "appium": "^2.0.0-beta.53",
     "appium-uiautomator2-driver": "^2.12.3",
     "chromedriver": "^109.0.0",
-    "wdio-chromedriver-service": "^8.0.1"
+    "wdio-chromedriver-service": "^8.0.1",
+    "wdio-timeline-reporter": "^5.1.4"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",

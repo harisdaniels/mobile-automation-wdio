@@ -49,5 +49,5 @@ jobs:
         - name: Generate Report
           uses: actions/upload-artifact@v3
           with:
-            name: mochawesome-report
-            path: ./mochawesome-report
+            name: timeline-report
+            path: ./timeline-report

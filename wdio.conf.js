@@ -1,5 +1,6 @@
 const projectPath = require('path');
 const androidAppPath = projectPath.join(process.cwd(), 'app/android/Android-MyDemoAppRN.1.3.0.build-244.apk');
+const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
 
 exports.config = {
     //
@@ -145,7 +146,8 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec',['timeline', { outputDir: './timeline-report' }]],
+    services: [[TimelineService]],
 
 
     
