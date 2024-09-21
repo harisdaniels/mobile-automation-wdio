@@ -30,9 +30,9 @@ jobs:
             java-version: 17
             distribution: 'adopt'
         - name: Setup Node JS
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v4
           with:
-            node-version: 18
+            node-version: 20
         - name: Install Appium and Setup Appium Server
           run: |
             chmod +x ./RunAppiumServer.sh
