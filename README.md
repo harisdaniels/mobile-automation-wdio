@@ -17,7 +17,6 @@ Make sure you have [Java](https://www.oracle.com/id/java/technologies/downloads/
 
 ### Package Installation
 Before start development and running the test you need to install packages that needed for this simple project. To install them, you need to do these step:
-
 - Go to your project repo directory in your local machine.
 - Open your terminal or Git Bash (if you have this)
 - Type `npm install` in your terminal and press ENTER on your keyboard to install all dependecies
