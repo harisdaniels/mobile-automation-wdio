@@ -1,4 +1,4 @@
-# This Is My Sample Project of Mobile Automation Testing with Appium-WebdriverIO and using Github Actions as CI/CD Tool
+# This Is My Sample Project of Mobile Automation Testing with Appium-WebdriverIO and Do Integration using Github Actions as CI/CD Tool
 
 ## Project Information
 For this project, i use:
