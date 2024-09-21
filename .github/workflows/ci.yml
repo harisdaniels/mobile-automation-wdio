@@ -32,7 +32,7 @@ jobs:
         - name: Setup Node JS
           uses: actions/setup-node@v3
           with:
-            node-version: 18
+            node-version: 16
         - name: Install Appium and Setup Appium Server
           run: |
             chmod +x ./RunAppiumServer.sh
