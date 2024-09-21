@@ -13,7 +13,7 @@ For this project, i use:
 
 ### Setup
 For windows and mac, you can [download node](https://nodejs.org/en/) and install.
-Make sure you have [Java](https://www.oracle.com/id/java/technologies/downloads/), [Appium](https://appium.io/docs/en/2.0/quickstart/install/), and [Android Studio](https://developer.android.com/studio)
+Make sure you have [Java](https://www.oracle.com/id/java/technologies/downloads/), [Appium](https://appium.io/docs/en/2.0/quickstart/install/), and [Android Studio](https://developer.android.com/studio) installed.
 
 ### Package Installation
 Before start development and running the test you need to install packages that needed for this simple project. To install them, you need to do these step:
