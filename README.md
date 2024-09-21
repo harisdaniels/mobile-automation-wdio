@@ -3,7 +3,7 @@
 ## Project Information
 For this project, i use:
 - WebdriverIO (https://webdriver.io/)
-- Appium (https://appium.io/docs/en/2.0/quickstart/test-js/)
+- Appium (https://appium.io/docs/en/2.0/)
 - Timeline Reporter (https://webdriver.io/docs/wdio-timeline-reporter/)
 
 ## Preparation
