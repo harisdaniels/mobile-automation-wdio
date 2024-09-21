@@ -38,11 +38,11 @@ jobs:
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
         - name: Install Dependencies
-          run: | 
-            npx npm-check-updates -u
+          run: #| 
+            # npx npm-check-updates -u
             npm install
-        - name: Setup Android SDK
-          uses: android-actions/setup-android@v3
+        # - name: Setup Android SDK
+        #   uses: android-actions/setup-android@v3
         - name: Run Automation Test
           uses: reactivecircus/android-emulator-runner@v2
           with:
