@@ -48,7 +48,9 @@ jobs:
             force-avd-creation: false
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: true
-            script: npm run test
+            script: |
+              adb wait-for-device
+              npm run test
         - name: Generate Report
           uses: actions/upload-artifact@v4
           with:
