@@ -27,6 +27,7 @@ jobs:
         - name: Setup JDK
           uses: actions/setup-java@v4
           with:
+            distribution: 'temurin'
             java-version: '21'
         - name: Setup Node JS
           uses: actions/setup-node@v3
