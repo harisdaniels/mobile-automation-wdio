@@ -33,14 +33,12 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: 18
+        - name: Install Dependencies
+          run: npm install
         - name: Install Appium and Setup Appium Server
           run: |
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
-        - name: Install Dependencies
-          run: |
-            npm uninstall --all
-            npm install
         - name: Run Automation Test
           uses: reactivecircus/android-emulator-runner@v2
           with:
