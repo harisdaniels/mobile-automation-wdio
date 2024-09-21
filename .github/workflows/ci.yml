@@ -39,8 +39,8 @@ jobs:
             ./RunAppiumServer.sh
         - name: Install Dependencies
           run: |
-            npm install
             npm install ts-node --save-dev
+            npm install
         - name: Run Automation Test
           uses: reactivecircus/android-emulator-runner@v2
           with:
@@ -50,7 +50,7 @@ jobs:
             disable-animations: true
             script: npm run test
         - name: Generate Report
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: timeline-report
             path: ./timeline-report
