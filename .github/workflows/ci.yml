@@ -37,7 +37,9 @@ jobs:
             chmod +x ./RunAppiumServer.sh
             ./RunAppiumServer.sh
         - name: Install Dependencies
-          run:  npm install
+          run: | 
+            npx npm-check-updates -u
+            npm install
         - name: Run Automation Test
           uses: reactivecircus/android-emulator-runner@v2
           with:
