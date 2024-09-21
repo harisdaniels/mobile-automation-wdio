@@ -76,6 +76,7 @@ exports.config = {
         "appium:app": androidAppPath,
         "appium:automationName": "UIAutomator2",
         // "appium:appWaitActivity": "com.swaglabsmobileapp.MainActivity"
+        "appium:uiautomator2ServerInstallTimeout": 90000
     }],
     //
     // ===================
